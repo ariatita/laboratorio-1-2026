@@ -8,8 +8,8 @@
 
 # Grupo
 
-- Estudiante 1 (Legajo 1) - cor...@estudiante1.com
-- Estudiante 2 (Legajo 2) - cor...@estudiante2.com
+- Agustin Ariata 210918 agusariata08@gmail.com
+- Simon Claudel 212234 - simonclaudel2006@gmail.com
 
 # Contexto / Escenario
 
