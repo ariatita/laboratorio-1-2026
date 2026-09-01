@@ -8,8 +8,8 @@
 
 # Grupo
 
-- Agustin Ariata 210918 agusariata08@gmail.com
-- Simon Claudel 212234 - simonclaudel2006@gmail.com
+- Agustin A. 210918 - agu...@gmail.com
+- Simon C. 212234 - sim...@gmail.com
 
 # Contexto / Escenario
 
