@@ -30,12 +30,12 @@ public class Artefacto {
         if (this == o) return true;
         if(o == null || getClass() != o.getClass()) return false;
         Artefacto a = (Artefacto)o;
-        return (nombre.equals(a.nombre)) && (poder == a.poder) && (tipo.equals(a.tipo));
+        return (nombre.equals(a.nombre));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tipo, poder, nombre);
+        return Objects.hash(nombre);
     }
 }
 

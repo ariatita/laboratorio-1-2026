@@ -6,40 +6,50 @@ import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import java.util.*;
 
 public class CatalogoArtefactos {
-    private Map<String, Artefacto> catalogo_a = new HashMap<>();
+    private Map<String, Artefacto> catalogo_a;
 
-    public CatalogoArtefactos(Artefacto a) {
-        String tipo = a.getTipo();
-        catalogo_a.put(tipo, a);
+    public CatalogoArtefactos() {
+        catalogo_a = new HashMap<>();
     }
 
     public void agregarArtefacto(Artefacto a) {
-        String tipo = a.getTipo();
-        catalogo_a.put(tipo, a);
+        String nombre = a.getNombre();
+        if (!catalogo_a.containsKey(nombre)) catalogo_a.put(nombre, a);
     }
 
     public Set<Artefacto> obtenerArtefactosUnicos() {
-        return new HashSet<>(this.catalogo_a.values());
+        return new HashSet<>(catalogo_a.values());
     }
 
     public List<Artefacto> buscarArtefactosPorTipo(String tipo) {
         List<Artefacto> lista = new ArrayList<>();
-        lista.add(catalogo_a.get(tipo));
-        lista.sort((Artefacto a1, Artefacto a2) ->  a1.getPoder() - a2.getPoder());
+        for (Artefacto a : catalogo_a.values()) {
+            if(a.getTipo().equals(tipo)) lista.add(a);
+        }
+        lista.sort((Artefacto a1, Artefacto a2) ->  a2.getPoder() - a1.getPoder());
         return lista;
     }
 
     public Map<String, Integer> contarArtefactosPorTipo() {
         Map<String, Integer> mapa = new HashMap<>();
-        for(Map.Entry<String, Artefacto> entry : catalogo_a.entrySet()) {
-            Artefacto a = entry.getValue();
-            mapa.put(a.getTipo(), catalogo_a.get()); //Falta terminar
+        for(Artefacto a : catalogo_a.values()) {
+            String tipo = a.getTipo();
+            if(mapa.containsKey(tipo)) {
+                int cantidad = mapa.get(tipo);
+                mapa.put(tipo, cantidad + 1); //Put reemplaza el valor si la clave es la misma.
+            }
+            else mapa.put(tipo, 1);
         }
         return mapa;
 
     }
 
     public Artefacto obtenerArtefactoMasPoderoso() {
-        //Falta terminar
+        Artefacto masPoderoso = null;
+
+        for(Artefacto a : catalogo_a.values()) {
+            if(masPoderoso == null || a.getPoder() > masPoderoso.getPoder()) masPoderoso = a;
+        }
+        return masPoderoso;
     }
 }
